@@ -1,26 +1,68 @@
 {
-  "name": "swaggerboy-agent",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021",
-    "next": "15.0.1"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.1"
-  }
+	"name": "swaggerboy",
+	"version": "0.1.7",
+	"private": false,
+	"description": "AI-Copilot for OpenAPI Specification (OAS) documents",
+	"scripts": {
+		"dev": "bun next dev",
+		"build": "bun next build",
+		"start": "bun next start",
+		"lint": "bun next lint",
+		"prepublishOnly": "bun next build && bun build ./bin/cli.ts --target=node --outfile ./bin/cli.js",
+		"build-cli": "bun build ./bin/cli.ts --target=node --outfile ./bin/cli.js"
+	},
+	"type": "module",
+	"bin": {
+		"swaggerboy": "./bin/cli.js"
+	},
+	"files": [
+		".next",
+		"bin/cli.js",
+		"package.json",
+		"README.md",
+		"!.next/cache"
+	],
+	"dependencies": {
+		"@ai-sdk/openai": "^0.0.70",
+		"@ai-sdk/react": "^0.0.66",
+		"@assistant-ui/react": "^0.5.98",
+		"@assistant-ui/react-ai-sdk": "^0.6.17",
+		"@assistant-ui/react-markdown": "^0.2.26",
+		"@next/bundle-analyzer": "^15.0.2",
+		"@next/env": "^15.0.2",
+		"@radix-ui/react-checkbox": "^1.1.2",
+		"@radix-ui/react-dialog": "^1.1.2",
+		"@radix-ui/react-dropdown-menu": "^2.1.2",
+		"@radix-ui/react-label": "^2.1.0",
+		"@radix-ui/react-progress": "^1.1.0",
+		"@radix-ui/react-radio-group": "^1.2.1",
+		"@radix-ui/react-slot": "^1.1.0",
+		"@seriousme/openapi-schema-validator": "^2.2.3",
+		"@stoplight/elements": "^8.4.6",
+		"@vercel/kv": "^3.0.0",
+		"ai": "^3.4.20",
+		"class-variance-authority": "^0.7.0",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.453.0",
+		"next": "14.2.13",
+		"next-themes": "^0.3.0",
+		"openai": "^4.68.4",
+		"openapi3-ts": "^4.4.0",
+		"react": "19.0.0-rc-69d4b800-20241021",
+		"tailwind-merge": "^2.5.4",
+		"tailwindcss-animate": "^1.0.7",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"ajv": "^8.17.1",
+		"eslint": "^8",
+		"eslint-config-next": "15.0.1",
+		"postcss": "^8",
+		"tailwindcss": "^3.4.1",
+		"tsx": "^4.19.2",
+		"typescript": "^5"
+	}
 }

@@ -2,20 +2,230 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+@layer base {
+	:root {
+		--background: 210deg 40% 98.04%;
+		--foreground: 224 71.4% 4.1%;
+		--card: 0 0% 100%;
+		--card-foreground: 224 71.4% 4.1%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 224 71.4% 4.1%;
+		--primary: 262.1 83.3% 57.8%;
+		--primary-foreground: 210 20% 98%;
+		--secondary: 220 14.3% 95.9%;
+		--secondary-foreground: 220.9 39.3% 11%;
+		--muted: 220 14.3% 95.9%;
+		--muted-foreground: 220 8.9% 46.1%;
+		--accent: 220 14.3% 95.9%;
+		--accent-foreground: 220.9 39.3% 11%;
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 210 20% 98%;
+		--border: 220 13% 91%;
+		--input: 220 13% 91%;
+		--ring: 262.1 83.3% 57.8%;
+		--radius: 0.5rem;
+		--chart-1: 12 76% 61%;
+		--chart-2: 173 58% 39%;
+		--chart-3: 197 37% 24%;
+		--chart-4: 43 74% 66%;
+		--chart-5: 27 87% 67%;
+	}
+
+	.dark {
+		--background: 215 27.9% 16.9%;
+		--foreground: 210 20% 98%;
+		--card: 224 71.4% 4.1%;
+		--card-foreground: 210 20% 98%;
+		--popover: 224 71.4% 4.1%;
+		--popover-foreground: 210 20% 98%;
+		--primary: 263.4 70% 50.4%;
+		--primary-foreground: 210 20% 98%;
+		--secondary: 215 27.9% 16.9%;
+		--secondary-foreground: 210 20% 98%;
+		--muted: 215 27.9% 16.9%;
+		--muted-foreground: 217.9 10.6% 64.9%;
+		--accent: 215 27.9% 16.9%;
+		--accent-foreground: 210 20% 98%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 210 20% 98%;
+		--border: 215 27.9% 16.9%;
+		--input: 215 27.9% 16.9%;
+		--ring: 263.4 70% 50.4%;
+		--chart-1: 220 70% 50%;
+		--chart-2: 160 60% 45%;
+		--chart-3: 30 80% 55%;
+		--chart-4: 280 65% 60%;
+		--chart-5: 340 75% 55%;
+
+		--aui-muted: 215deg 21.14% 22.15%;
+	}
+
+	.dark .aui-root {
+		--aui-muted: 215deg 21.14% 22.15%;
+	}
+
+	.aui-root > .aui-thread-viewport {
+		padding-top: 4rem;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+blockquote,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+pre {
+	margin: 0;
+}
+button {
+	background-color: transparent;
+	background-image: none;
+}
+:focus {
+	outline: none;
+}
+fieldset,
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+}
+ol,
+ul {
+	list-style: none;
+}
+html {
+	font-family: var(--font-ui);
+	line-height: 1.5;
+}
+body {
+	text-rendering: optimizeSpeed;
+	font-family: inherit;
+	line-height: inherit;
+	margin: 0;
+	min-height: 100vh;
+}
+*,
+:after,
+:before {
+	border: 0 solid var(--color-border, currentColor);
+	box-sizing: border-box;
+}
+hr {
+	border-top-width: 1px;
+}
+img {
+	border-style: solid;
+}
+textarea {
+	resize: vertical;
+}
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+	color: #a1a1aa;
+}
+input::placeholder,
+textarea::placeholder {
+	color: #a1a1aa;
+}
+[role="button"],
+button {
+	cursor: pointer;
+}
+table {
+	border-collapse: collapse;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+	color: inherit;
+	line-height: inherit;
+	padding: 0;
+}
+code,
+kbd,
+pre,
+samp {
+	font-family: var(--font-mono);
+}
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
+	display: block;
+	vertical-align: middle;
+}
+img,
+video {
+	height: auto;
+	max-width: 100%;
+}
+button {
+	font-family: var(--font-ui);
+}
+select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+select::-ms-expand {
+	display: none;
+}
+select {
+	font-size: inherit;
+}
+iframe {
+	border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
 }

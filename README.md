@@ -12,28 +12,27 @@ npx swaggerboy
 
 - 🤖 Interactive API design through natural language conversations
 - 📝 OpenAPI 3.1.0 specification generation
-- 📚 Comprehensive API documentation
 - 💡 Proactive feature recommendations
-- 🛠️ Implementation details documentation
 
-## Key Capabilities
+## Key Capabilities of Swaggerboy
 
 - Guides users through high-level API design
 - Creates detailed schema components and data models
 - Establishes reusable components (responses, parameters, examples)
-- Configures endpoint operations with implementation details
 - Validates OpenAPI specifications
-- Documents business logic and implementation requirements
+- Extends endpoint operations with implementation details
 
-## Technical Details
+## Built With
 
-Swaggerboy uses:
-
-- OpenAPI Specification 3.1.0
-- OpenAI Gpt4o for LLM-based conversational AI
-- Custom tools for specification management
-- Extension support for implementation details (`x-implementation-details`)
+- [OpenAPI Specification 3.1.0](https://www.openapis.org/)
+- [OpenAI for LLM-based conversational AI](https://github.com/openai)
+- [Vercel AI SDK](https://github.com/vercel/ai)
+- [Spotlight elements for interactive OpenAPI](https://github.com/stoplightio/elements)
+- [Shadcn/ui](https://github.com/shadcn-ui/ui)
+- [assistant-ui](https://github.com/Yonom/assistant-ui)
+- [Next.js](https://github.com/vercel/next.js)
+- [openapi3-ts](https://github.com/metadevpro/openapi3-ts)
 
 ## License
 
-¯\_(ツ)\_/¯
+Swaggerboy is licensed under the MIT License.

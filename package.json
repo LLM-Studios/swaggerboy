@@ -64,5 +64,9 @@
 		"tailwindcss": "^3.4.1",
 		"tsx": "^4.19.2",
 		"typescript": "^5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/LLM-Studios/swaggerboy"
 	}
 }

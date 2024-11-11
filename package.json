@@ -1,6 +1,6 @@
 {
 	"name": "swaggerboy",
-	"version": "0.1.7",
+	"version": "0.1.9",
 	"private": false,
 	"description": "AI-Copilot for OpenAPI Specification (OAS) documents",
 	"scripts": {

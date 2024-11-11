@@ -149,11 +149,10 @@ async function startServer() {
 
 	try {
 		const server = spawn("npx", ["next", "start", "-p", port.toString()], {
-			cwd: pkgDir, // Use the package installation directory for Next.js
+			cwd: pkgDir,
 			env: {
 				...process.env,
-				NODE_ENV: "development",
-				WORKSPACE_ROOT: userDir, // Add this to help resolve paths in the app
+				WORKSPACE_ROOT: userDir,
 				NEXT_PUBLIC_OPENAPI_PATH: absoluteOpenAPIPath,
 				PORT: port.toString(),
 				API_BASE_URL: options.apiBaseUrl || process.env.API_BASE_URL,

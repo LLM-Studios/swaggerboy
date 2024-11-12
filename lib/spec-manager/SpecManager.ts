@@ -14,12 +14,13 @@ import {
 	LinkObject,
 	CallbackObject,
 	InfoObject,
+	ServerObject,
 } from "openapi3-ts/oas31";
-import { Validator } from "@seriousme/openapi-schema-validator";
-import type { ErrorObject } from "ajv";
 import { StorageAdapter } from "./adapters/storage-adapter";
+import { stringify } from "yaml";
 
-const validator = new Validator();
+import ibmOpenapiRuleset from "@ibm-cloud/openapi-ruleset";
+import { ISpectralDiagnostic, Spectral } from "@stoplight/spectral-core";
 
 export type PathItemString =
 	| "get"
@@ -66,8 +67,17 @@ export class SpecManager {
 		}
 
 		const validation = await this.validateSpec();
-		if (!validation.valid) {
-			throw new Error(`Invalid OpenAPI spec: ${validation.errors}`);
+
+		if (validation.find((error) => error.severity === 0)) {
+			throw new Error(
+				`Invalid OpenAPI spec: ${stringify(
+					validation.map((v) => ({
+						code: v.code,
+						message: v.message,
+						path: v.path,
+					}))
+				)}`
+			);
 		}
 
 		await this.storage.write(this.spec);
@@ -78,16 +88,18 @@ export class SpecManager {
 	 * Validates the OpenAPI specification.
 	 * @returns A boolean indicating whether the spec is valid.
 	 */
-	async validateSpec(): Promise<{
-		valid: boolean;
-		errors?: ErrorObject[] | string;
-	}> {
+	async validateSpec(): Promise<ISpectralDiagnostic[]> {
 		if (!this.spec) {
 			throw new Error("Spec is not loaded.");
 		}
 
-		const validation = await validator.validate(this.spec);
-		return validation;
+		const spectral = new Spectral();
+		spectral.setRuleset(ibmOpenapiRuleset);
+		const results = await spectral.run(JSON.stringify(this.spec));
+
+		return results.filter(
+			(result) => !(result.code as string).startsWith("ibm")
+		);
 	}
 
 	/**
@@ -428,5 +440,40 @@ export class SpecManager {
 	 */
 	getSpec(): OpenAPIObject | null {
 		return this.spec;
+	}
+
+	/**
+	 * Removes the server from the OpenAPI specification.
+	 */
+	removeServer(): SpecManager {
+		if (!this.spec) {
+			throw new Error("Spec is not loaded.");
+		}
+		this.spec.servers = [];
+		return this;
+	}
+
+	/**
+	 * Sets the server in the OpenAPI specification.
+	 * @param servers - The ServerObject array to set.
+	 */
+	setServers(servers: ServerObject[]): SpecManager {
+		if (!this.spec) {
+			throw new Error("Spec is not loaded.");
+		}
+		this.spec.servers = servers;
+		return this;
+	}
+
+	/**
+	 * Sets the tags in the OpenAPI specification.
+	 * @param tags - The tags to set.
+	 */
+	setTags(tags: { name: string; description?: string }[]): SpecManager {
+		if (!this.spec) {
+			throw new Error("Spec is not loaded.");
+		}
+		this.spec.tags = tags;
+		return this;
 	}
 }

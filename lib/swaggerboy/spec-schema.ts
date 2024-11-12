@@ -1,13 +1,13 @@
-import { z } from 'zod'
+import { z } from "zod";
 
 // Helper schemas
-const nonEmptyString = z.string().min(1)
-const nonEmptyStringArray = z.array(nonEmptyString).min(1)
+export const nonEmptyString = z.string().min(1);
+export const nonEmptyStringArray = z.array(nonEmptyString).min(1);
 
 // Reference Object
 export const ReferenceObject = z.object({
 	$ref: nonEmptyString,
-})
+});
 
 // Server Object
 export const ServerObject = z.object({
@@ -22,29 +22,22 @@ export const ServerObject = z.object({
 			})
 		)
 		.optional(),
-})
+});
 
 // External Documentation Object
 export const ExternalDocumentationObject = z.object({
 	description: z.string().optional(),
 	url: nonEmptyString,
-})
+});
 
 // Schema Object (simplified, as full implementation would be recursive)
 export const SchemaObject = z
 	.object({
-		type: z.enum([
-			'string',
-			'number',
-			'integer',
-			'boolean',
-			'array',
-			'object',
-		]),
+		type: z.enum(["string", "number", "integer", "boolean", "array", "object"]),
 		format: z.string().optional(),
 		// Add other properties as needed
 	})
-	.passthrough()
+	.passthrough();
 
 // Example Object
 export const ExampleObject = z.object({
@@ -52,17 +45,17 @@ export const ExampleObject = z.object({
 	description: z.string().optional(),
 	value: z.any().optional(),
 	externalValue: z.string().url().optional(),
-})
+});
 
 // Parameter Object
 export const ParameterObject = z.object({
 	name: nonEmptyString,
-	in: z.enum(['query', 'header', 'path', 'cookie']),
+	in: z.enum(["query", "header", "path", "cookie"]),
 	description: z.string().optional(),
 	required: z.boolean().optional(),
 	deprecated: z.boolean().optional(),
 	allowEmptyValue: z.boolean().optional(),
-})
+});
 
 // Request Body Object
 export const RequestBodyObject = z.object({
@@ -72,15 +65,12 @@ export const RequestBodyObject = z.object({
 		z.object({
 			schema: ReferenceObject,
 			examples: z
-				.record(
-					nonEmptyString,
-					z.union([ExampleObject, ReferenceObject])
-				)
+				.record(nonEmptyString, z.union([ExampleObject, ReferenceObject]))
 				.optional(),
 		})
 	),
 	required: z.boolean().optional(),
-})
+});
 
 // Response Object
 export const ResponseObject = z.object({
@@ -92,15 +82,12 @@ export const ResponseObject = z.object({
 			z.object({
 				schema: ReferenceObject,
 				examples: z
-					.record(
-						nonEmptyString,
-						z.union([ExampleObject, ReferenceObject])
-					)
+					.record(nonEmptyString, z.union([ExampleObject, ReferenceObject]))
 					.optional(),
 			})
 		)
 		.optional(),
-})
+});
 
 // Operation Object
 export const OperationObject = z.object({
@@ -111,14 +98,11 @@ export const OperationObject = z.object({
 	parameters: z.array(ReferenceObject).optional(),
 	requestBody: z.union([ReferenceObject, RequestBodyObject]).optional(),
 	responses: z.record(
-		z.union([
-			z.literal('default'),
-			z.string().regex(/^[1-5](?:\d{2}|\dX)$/),
-		]),
+		z.union([z.literal("default"), z.string().regex(/^[1-5](?:\d{2}|\dX)$/)]),
 		z.union([ResponseObject, ReferenceObject])
 	),
-	'x-implementation-details': z.string().optional(),
-})
+	"x-implementation-details": z.string().optional(),
+});
 
 // Path Item Object
 export const PathItemObject = z.object({
@@ -134,7 +118,7 @@ export const PathItemObject = z.object({
 	trace: OperationObject.optional(),
 	servers: z.array(ServerObject).optional(),
 	parameters: z.array(ReferenceObject).optional(),
-})
+});
 
 // Components Object
 export const ComponentsObject = z.object({
@@ -153,9 +137,11 @@ export const ComponentsObject = z.object({
 	requestBodies: z
 		.record(nonEmptyString, z.union([RequestBodyObject, ReferenceObject]))
 		.optional(),
-})
+});
 
-export const HeaderObject = z.record(nonEmptyString, ReferenceObject).optional()
+export const HeaderObject = z
+	.record(nonEmptyString, ReferenceObject)
+	.optional();
 
 // Info Object
 export const InfoObject = z.object({
@@ -177,11 +163,11 @@ export const InfoObject = z.object({
 		})
 		.optional(),
 	version: nonEmptyString,
-})
+});
 
 // OpenAPI Object
 export const OpenAPIObject = z.object({
-	openapi: z.literal('3.1.0'),
+	openapi: z.literal("3.1.0"),
 	info: InfoObject,
 	servers: z.array(ServerObject).optional(),
 	paths: z.record(z.string().regex(/^\//), PathItemObject).optional(),
@@ -194,6 +180,6 @@ export const OpenAPIObject = z.object({
 			})
 		)
 		.optional(),
-})
+});
 
-export const OpenAPISchema = OpenAPIObject
+export const OpenAPISchema = OpenAPIObject;

@@ -1,11 +1,11 @@
 {
-	"openapi": "3.1.0",
-	"info": {
-		"title": "My API",
-		"description": "This is an example of an OpenAPI document",
-		"version": "1.0.0"
-	},
-	"paths": {},
-	"servers": [],
-	"tags": []
+  "openapi": "3.1.0",
+  "info": {
+    "title": "My API",
+    "description": "This is an example of an OpenAPI document",
+    "version": "1.0.0"
+  },
+  "paths": {},
+  "servers": [],
+  "tags": []
 }

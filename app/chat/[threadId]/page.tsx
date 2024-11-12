@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { Thread } from "@/components/chat/thread";
 import { loadThreadMessages } from "@/app/actions/thread";
 import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { ListRestart, Loader2, Trash2 } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NavBar } from "@/components/nav-bar";
 import ErrorMessage from "@/components/error";

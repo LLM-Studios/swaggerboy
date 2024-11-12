@@ -27,7 +27,7 @@ npx swaggerboy
 - [OpenAPI Specification 3.1.0](https://www.openapis.org/)
 - [OpenAI for LLM-based conversational AI](https://github.com/openai)
 - [Vercel AI SDK](https://github.com/vercel/ai)
-- [Spotlight elements for interactive OpenAPI](https://github.com/stoplightio/elements)
+- [Stoplight elements for interactive OpenAPI](https://github.com/stoplightio/elements)
 - [Shadcn/ui](https://github.com/shadcn-ui/ui)
 - [assistant-ui](https://github.com/Yonom/assistant-ui)
 - [Next.js](https://github.com/vercel/next.js)

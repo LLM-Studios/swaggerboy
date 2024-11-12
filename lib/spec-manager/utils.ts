@@ -8,5 +8,9 @@ export const baseOpenApiSpec = {
 	},
 	paths: {},
 	tags: [],
-	servers: [],
+	servers: [
+		{
+			url: "http://localhost:3000",
+		},
+	],
 } as OpenAPIObject;

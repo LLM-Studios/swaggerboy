@@ -6,4 +6,6 @@ export const baseOpenApiSpec = {
 		title: "My API",
 		version: "1.0.0",
 	},
+	tags: [],
+	servers: [],
 } as OpenAPIObject;

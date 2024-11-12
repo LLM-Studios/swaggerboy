@@ -30,7 +30,7 @@ export function OpenapiView({ threadId }: { threadId: string }) {
 
 	useEffect(() => {
 		getDocs();
-		const interval = setInterval(getDocs, 3000);
+		const interval = setInterval(getDocs, 5000);
 		return () => clearInterval(interval);
 	}, []);
 

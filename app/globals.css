@@ -229,3 +229,12 @@ iframe {
 		transition-duration: 0.01ms !important;
 	}
 }
+
+.aui-thread-welcome-suggestion {
+	background-color: hsl(var(--aui-muted));
+}
+
+.aui-thread-welcome-suggestion:hover {
+	background-color: hsl(var(--aui-muted));
+	border: 1px solid #d1d1e6;
+}

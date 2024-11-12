@@ -1,6 +1,5 @@
 import {
 	Thread as AuiThread,
-	ContentPartPrimitiveTextProps,
 	ThreadWelcome,
 	useContentPartText,
 	useMessage,
@@ -13,7 +12,7 @@ import { MarkdownText } from "@/components/chat/markdown-text";
 import { Hammer, Loader2 } from "lucide-react";
 import { Card } from "../ui/card";
 
-const MyCustomText: FC<ContentPartPrimitiveTextProps> = (props) => {
+const MyCustomText = (props) => {
 	const { text } = useContentPartText();
 	const message = useMessage();
 	let isLast = false;
@@ -76,7 +75,38 @@ export const Thread: FC<ThreadConfig> = (config) => {
 			}}
 		>
 			<AuiThread.Viewport>
-				<ThreadWelcome />
+				<ThreadWelcome.Root>
+					<ThreadWelcome.Center>
+						<ThreadWelcome.Avatar />
+						<ThreadWelcome.Message
+							className="max-w-[80%] text-lg"
+							message="👋 Hi! I'm Swaggerboy, your AI backend assistant. I'll help you build the perfect backend for your app. No technical knowledge needed - just tell me about your app and what you want it to do."
+						/>
+						<div className="flex justify-start flex-col items-start w-full max-w-[80%] mt-4 space-y-2">
+							<ThreadWelcome.Suggestion
+								suggestion={{
+									prompt:
+										"I want to build an app where people can create digital time capsules of memories, set to be shared at specific future dates or triggered by life events.",
+									text: "Memory Time Capsule Network",
+								}}
+							/>
+							<ThreadWelcome.Suggestion
+								suggestion={{
+									prompt:
+										"I want to create an app that generates personalized local adventures for people. Like a treasure hunt creator that uses local spots and history.",
+									text: "Hyperlocal Adventure Generator",
+								}}
+							/>
+							<ThreadWelcome.Suggestion
+								suggestion={{
+									prompt:
+										"I want to create a platform where people can exchange skills and knowledge directly - like trading Spanish lessons for cooking classes.",
+									text: "Skill Bartering Marketplace",
+								}}
+							/>
+						</div>
+					</ThreadWelcome.Center>
+				</ThreadWelcome.Root>
 				<AuiThread.Messages />
 				<AuiThread.FollowupSuggestions />
 				<AuiThread.ViewportFooter>

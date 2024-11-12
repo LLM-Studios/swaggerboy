@@ -16,6 +16,9 @@ import {
 	StorageAdapter,
 	StorageAdapterOptions,
 } from "../spec-manager/adapters/storage-adapter";
+import { SetServerTool } from "./tools/SetServerTool";
+import { ValidateSpecTool } from "./tools/ValidateSpecTool";
+import { setGlobalTagsTool } from "./tools/SetGlobalTagsTool";
 
 export interface SwaggerboyOptions {
 	storage: StorageAdapterOptions;
@@ -49,6 +52,7 @@ export class Swaggerboy extends AssistantAgent {
 	async getTools() {
 		return [
 			new SetEndpointTool(this.specManager, this),
+			new SetServerTool(this.specManager, this),
 			new SetHeaderTool(this.specManager, this),
 			new SetSchemaTool(this.specManager, this),
 			new SetResponseTool(this.specManager, this),
@@ -57,6 +61,8 @@ export class Swaggerboy extends AssistantAgent {
 			new SetExampleTool(this.specManager, this),
 			new OverwriteSpecTool(this.specManager, this),
 			new SetInfoTool(this.specManager, this),
+			new ValidateSpecTool(this.specManager, this),
+			new setGlobalTagsTool(this.specManager, this),
 		];
 	}
 

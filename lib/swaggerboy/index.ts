@@ -68,8 +68,25 @@ export class Swaggerboy extends AssistantAgent {
 
 	async onAfterRun() {
 		await this.specManager.saveSpec().catch(async (err) => {
-			await this.addMessage("Failed to save the OpenAPI Specification: " + err);
-			await this.runSync();
+			if (this.runCount <= 3) {
+				await this.addMessage(
+					"Failed to save the OpenAPI Specification: " +
+						err +
+						"\n\n" +
+						"I'll try to resolve this issue right away.",
+					{
+						role: "assistant",
+					}
+				);
+				await this.runSync();
+			} else {
+				await this.addMessage(
+					"There seems to be an issue with saving the OpenAPI Specification. Please try again later.",
+					{
+						role: "assistant",
+					}
+				);
+			}
 		});
 	}
 

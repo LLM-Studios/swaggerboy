@@ -33,6 +33,7 @@ export class AssistantAgent {
 	} | null = null;
 	metadata: Record<string, any> = {};
 	toolCallStack: (RequiredActionFunctionToolCall & { output: any })[] = [];
+	runCount = 0;
 
 	constructor(threadId: string, config: RunCreateParams) {
 		this.config = config;
@@ -222,6 +223,7 @@ export class AssistantAgent {
 				return this.handleRunResult(nextRunResult, options);
 			}
 		} else {
+			this.runCount++;
 			await this.onAfterRun(runResult);
 			return runResult;
 		}

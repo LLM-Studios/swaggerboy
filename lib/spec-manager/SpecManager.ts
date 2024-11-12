@@ -55,6 +55,11 @@ export class SpecManager {
 	 */
 	async loadSpec(): Promise<SpecManager> {
 		this.spec = await this.storage.read();
+
+		if (!this.spec) {
+			throw new Error("Failed to load OpenAPI spec.");
+		}
+
 		return this;
 	}
 

@@ -2,27 +2,10 @@
 	"openapi": "3.1.0",
 	"info": {
 		"title": "My API",
+		"description": "This is an example of an OpenAPI document",
 		"version": "1.0.0"
 	},
-	"paths": {
-		"/hello": {
-			"get": {
-				"tags": ["Greet"],
-				"summary": "Hello World Endpoint",
-				"description": "This endpoint returns a simple 'Hello World' message.",
-				"operationId": "getHelloWorld",
-				"x-implementation-details": "This operation is designed to return a static message 'Hello World' without requiring any specific input parameters.",
-				"responses": {
-					"200": {
-						"description": "A successful response returning the Hello World message.",
-						"content": {
-							"text/plain": {
-								"example": "Hello World"
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+	"paths": {},
+	"servers": [],
+	"tags": []
 }

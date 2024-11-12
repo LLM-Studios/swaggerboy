@@ -48,3 +48,6 @@ next-env.d.ts
 
 # cli.js
 /bin/cli.js
+
+# openapi json
+openapi.json

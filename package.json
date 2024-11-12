@@ -4,10 +4,10 @@
 	"private": false,
 	"description": "AI-Copilot for OpenAPI Specification (OAS) documents",
 	"scripts": {
-		"dev": "bun next dev",
-		"build": "bun next build",
-		"start": "bun next start",
-		"lint": "bun next lint",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
 		"prepublishOnly": "bun next build && bun build ./bin/cli.ts --target=node --outfile ./bin/cli.js",
 		"build-cli": "bun build ./bin/cli.ts --target=node --outfile ./bin/cli.js"
 	},

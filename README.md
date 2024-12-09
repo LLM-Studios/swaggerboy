@@ -33,6 +33,8 @@ npx swaggerboy
 - [Next.js](https://github.com/vercel/next.js)
 - [openapi3-ts](https://github.com/metadevpro/openapi3-ts)
 
+https://llmstudios.de/
+
 ## License
 
 Swaggerboy is licensed under the MIT License.
